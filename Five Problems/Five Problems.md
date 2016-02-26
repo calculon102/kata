@@ -1,6 +1,6 @@
 # Five Problems
 
-These Java-classes solve the five problems as stated here: [1].
+These Java-classes solve the five problems as stated here in the [Shifted Up][1] blog.
 
 I don't think live-coding is a good interview-technique, but training these problem every now and then is a good reminder.
 
@@ -25,4 +25,4 @@ Write a function that given a list of non negative integers, arranges them such 
 Write a program that outputs all possibilities to put + or - or nothing between the numbers 1, 2, ..., 9 (in this order) such that the result is always 100. For example: 1 + 2 + 34 – 5 + 67 – 8 + 9 = 100.
 
 
-[1] [https://www.shiftedup.com/2015/05/07/five-programming-problems-every-software-engineer-should-be-able-to-solve-in-less-than-1-hour]
+[1]: https://www.shiftedup.com/2015/05/07/five-programming-problems-every-software-engineer-should-be-able-to-solve-in-less-than-1-hour
