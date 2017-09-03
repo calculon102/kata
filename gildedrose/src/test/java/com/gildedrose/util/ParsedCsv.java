@@ -11,24 +11,17 @@ import java.util.List;
 import com.gildedrose.Item;
 
 /**
- * Super-Quick'n'Dirty CSV-Parser für Items. Nur für den Golden-Master-Test! :)
- *
- * - Zeilen werden per Zeilenumbruch getrennt
- * - Spalten werden mit Semikolon getrennt
- * - Je Zeile drei Spalten!
- * - Erste Spalte ist eine beliebige Zeichenkette
- * - Zweite und dritte Spalte sind Integer
- * - Leerzeilen und Zeilen beginnen mit einer Raute # werden ignoriert.
- * @author FrGr
+ * Super-dirty CSV-Parser only for Golden-Master-Test.
+ * @author calculon102
  */
 public final class ParsedCsv {
 	private final Path csvFile;
 
 
 	 /**
-	  * Super-Quick'n'Dirty CSV-Parser für Items.
-	  * @param resourceName Name der CSV-Datei.
-	  * @param location Klasse aus deren Lokation der Pfad zur Datei ermittelt wird.
+	  * Instantiates new parser.
+	  * @param resourceName Name of CSV-file.
+	  * @param location Class to localize CSV-file from as resource.
 	  * @throws URISyntaxException
 	  */
 	public ParsedCsv(String resourceName, Class<?> location) throws URISyntaxException {

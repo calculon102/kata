@@ -1,14 +1,14 @@
-package com.gildedrose.stock;
+package com.gildedrose.itemtypes;
 
 import com.gildedrose.Item;
 
-public final class Inventory {
+public final class Store {
 
-	private Inventory() {
+	private Store() {
 		// NOP
 	}
 
-	public static StoredItem recognizeItem(Item item) {
+	public static StoredItem wrap(Item item) {
 		if (item.name.startsWith("Aged Brie")) {
 			return new AgedBrie(item);
 		}
@@ -21,7 +21,11 @@ public final class Inventory {
 			return new BackstagePass(item);
 		}
 
-		return new GeneralItem(item);
+		if (item.name.startsWith("Conjured")) {
+			return new Conjured(item);
+		}
+
+		return new Generic(item);
 	}
 
 }

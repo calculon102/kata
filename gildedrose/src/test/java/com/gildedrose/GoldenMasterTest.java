@@ -17,65 +17,6 @@ import com.gildedrose.util.ParsedCsv;
 
 /*
 +----------------------------------------------------------------------------------------------------+
-|                                                                                                    |
-|                                                                       .                            |
-|                                                                     .~~~                           |
-|                                                                   .:::...                          |
-|                                                                  ..+~...                           |
-|                                                               ..~::~...                            |
-|        ~~~~~~~~                       ............          ~:+::~~...                             |
-|        ...~:::+:::.              ~::~~~~~:~~~:::~~~.:::.  .::+:~~...                               |
-|           ...~~~~::::~.        ..++:++++++++~~:~~~~:::++++:::~...  ..                              |
-|           ..~~~..~~~:++~.   .:+++++++++++++::~~::~::~~~::::.....   .~~                             |
-|             . ..~~..~~:::~~~++::::::+++:::::~~~::~~~~~~~...~.~.    .~~                             |
-|                ..:.  ..~~:::::~:~~:~:::~~~::~~~~~:~~~~~~~..~~~   ..~~.                             |
-|                ++~.    .....~:++++::~~~~~~:~::::+++:~~~~~..~~~~~.~~~.                              |
-|                  .~~.  .. ..~~:::+++++:::+++++++::~...~~~~...~~~~~~~                               |
-|                   .~:~.  ~~.~~ :::++++++++++++:..::....~~~~~...~~~~.                               |
-|                   :+::~..~..~~.~~.~++++++:::~~ ..~~~~~~~~~~~....  .                                |
-|                    . .~~...~~~...:+++++++~~~~.. .~~~+++:~~~~..                                     |
-|                           .~.~~::++++++::::~~~~::+:+:::::~~~.                                      |
-|                               .:++++++:+++:~~~~::::~. .:+:~~.                                      |
-|                              .:++++++:~~~~~~~~...~.  ..~+~~~                                       |
-|                              .++++~... ~~.....~ .~~ .~~~::~~                                       |
-|                                .~~..~. .~o+: .~. .~.~~~~~..                                        |
-|                                  ~~~~~:+o+~...~~.~~~~~~                                            |
-|                                  .:+++o+:~~~.~~~~~~~~~                                             |
-|                                ..+ooooo+++:~~~~~~..~.. .~...~......                                |
-|                               ~++ooo+++++::.~...~~~~~~~..~~..........                              |
-|                     .~:     ~:+++o+:..::::.   ..~~~~~~+++++~::~~~..~.                              |
-|                     ~+o+: ~++++++:.   ...   ..~.~++++++++:~~:++++~....                             |
-|                      ~++++++:++~.         ~:~~~..:++++::~~..:++++:: ...                            |
-|                      .+++++oo+          ~+:~~~.~~::++::~~~~ ~:~:++:.....                           |
-|                     ~:++:~::++.       ~:+::~~::++:++::~~~...~~~~~::~..                             |
-|                     +:~~~.~~:::~~    .+::~~~:+o+++:~::::::~~~~~~~~~~~.                             |
-|                    .~~~~~~~~~~...   ::~:.. .+oo++::~:+++++:~~~~~~~~~~.                             |
-|                  .++~~~  ~~~~~..~~~~~:~.    +oo++::~:++::~~~~~~~~~~~..                             |
-|                 .+::.     ...~~~~~~~...     +o:::::+::~~.~~~~:~~~~....                             |
-|                    .          ......        ++:++::::~~..~~~~~......                               |
-|                                             ~:+++::::~~~~..~.... ..~                               |
-|                                              .:~~~~~~~~~~~.... .. .:..                             |
-|                                             ~~.~~::~::~.~~~...   .:+:~                             |
-|                                             ++~.~:+:::~. .~~~.   ++...                             |
-|                                           ~+o+:..:::::.~:::++:   ::~~~                             |
-|                                           ~o++:~.~:::~ ~::++++:.  .~::                             |
-|                                          .~:++:~.:~~:~ .::::::::~                                  |
-|                                          :~.~::~~..~..   ..:~~~~~.                                 |
-|                                         .++~~.~~~          ~~~:~~~~                                |
-|                                         .ooo:~~~~           :+o+:~.~                               |
-|                                         .ooo+:~.~           +oo++~~..                              |
-|                                          +oo+:+::           +oo+::::.                              |
-|                                   ..    .:+++:++:.  . . . ..+o++::+:~ .  .                         |
-|                              . . ......~~::::::::..... . ..~++::::::~ ...... .                     |
-|                                  .    ..... . . . .       ....... . . ..  .                        |
-|                                                                                                    |
-|                                                                                                    |
-|                                                                                                    |
-+----------------------------------------------------------------------------------------------------+
- */
-
-/*
-+----------------------------------------------------------------------------------------------------+
 |oooooooooooooooooooooooooooooooooooooooooooooooo+ooooooooooooooooooooooooooooooooooo+:oooooooooooooo|
 |ooooooooo+ooooooooooooooooooooooooooooooooo+oooo::oooooooooooooooooooooooooooooo+::~:+oooooooooooooo|
 |ooooooooo:~::oooooooooooooooooooooooooooooo~~++:~::++:+ooooooooooooooooooooo+::~..:ooooooooooooooooo|
@@ -135,11 +76,9 @@ import com.gildedrose.util.ParsedCsv;
  */
 
 /**
- * Vergleicht die Ausgabe der originalen GildedRose-Implementierung mit der
- * aktuellen. Damit wird die Korrektheit gegenüber den IST-Anforderungen
- * geprüft. Aber nicht für die Behandlung der neuen "Conjured"-Items.
- *
- * @author FrGr
+ * Compares current implementation with output of the original state.
+ * Does not include the new conjured-feature.
+ * @author calculon102
  */
 @RunWith(Parameterized.class)
 public final class GoldenMasterTest {
@@ -152,8 +91,7 @@ public final class GoldenMasterTest {
 	@Parameters(name="{0} for {1} days")
 	public static Iterable<Object[]> createFixtures() {
 		return Arrays.asList(new Object[][] {
-			// Hier können weitere Tests hinzugefügt werden:
-			// Name, Item-Array, Anzahl Tage
+			// More test-cases could be added.
 			{ "original.csv", 2 },
 		});
 	}
@@ -188,7 +126,6 @@ public final class GoldenMasterTest {
 			originalApp.updateQuality();
 		}
 
-		// Konsolenausgabe des Ist-Standes zur direkten Analyse
 		System.out.println("=== === === Output for " + itemCsv + " in " + days + " days. === === ===");
 		System.out.println();
 		System.out.println(currentOutput.toString());

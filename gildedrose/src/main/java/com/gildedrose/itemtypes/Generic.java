@@ -1,4 +1,4 @@
-package com.gildedrose.stock;
+package com.gildedrose.itemtypes;
 
 import com.gildedrose.Item;
 
@@ -6,9 +6,9 @@ import com.gildedrose.Item;
  * Wrapper around the Item assuring quality-boundaries through accessor-methods.
  * @author calculon102
  */
-final class GeneralItem extends AbstractStoreItem {
+final class Generic extends AbstractStoreItem {
 
-	public GeneralItem(Item item) {
+	public Generic(Item item) {
 		super(item);
 	}
 

@@ -1,4 +1,4 @@
-package com.gildedrose.stock;
+package com.gildedrose.itemtypes;
 
 public interface StoredItem {
 

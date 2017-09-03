@@ -1,4 +1,4 @@
-package com.gildedrose.stock;
+package com.gildedrose.itemtypes;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 import com.gildedrose.Item;
+import com.gildedrose.itemtypes.AgedBrie;
 
 public class AgedBrieTest {
 
