@@ -6,7 +6,6 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 import com.gildedrose.Item;
-import com.gildedrose.itemtypes.BackstagePass;
 
 public class BackstagePassTest {
 
@@ -44,6 +43,16 @@ public class BackstagePassTest {
 	@Test
 	public void qualityDropsToZeroAfterConcert() {
 		Item item = new Item("Backstage Pass", -1, 50);
+		BackstagePass pass = new BackstagePass(item);
+
+		pass.updateQuality();
+
+		assertThat(item.quality, is(0));
+	}
+
+	@Test
+	public void qualityNeverDropsBelowZero() {
+		Item item = new Item("Backstage Pass", -1, 0);
 		BackstagePass pass = new BackstagePass(item);
 
 		pass.updateQuality();

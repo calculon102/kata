@@ -98,10 +98,11 @@ public final class GoldenMasterTest {
 
 	@Test
 	public void compareOutputOfOriginalWithCurrentImplementation() throws IOException, URISyntaxException {
-		Item[] items = new ParsedCsv(itemCsv, this.getClass()).asItems();
+		Item[] inputForOriginal = new ParsedCsv(itemCsv, this.getClass()).asItems();
+		Item[] inputForCurrent = Arrays.copyOf(inputForOriginal, inputForOriginal.length);
 
-		GildedRose currentApp = new GildedRose(items);
-		GildedRoseOriginal originalApp = new GildedRoseOriginal(items);
+		GildedRose currentApp = new GildedRose(inputForCurrent);
+		GildedRoseOriginal originalApp = new GildedRoseOriginal(inputForOriginal);
 
 		StringBuilder currentOutput = new StringBuilder();
 		StringBuilder originalOutput = new StringBuilder();
@@ -115,10 +116,14 @@ public final class GoldenMasterTest {
 			currentOutput.append(csvHeader);
 			originalOutput.append(csvHeader);
 
-			for (Item item : items) {
-				currentOutput.append(item).append(lineSeparator());
+			for (Item item : inputForOriginal) {
 				originalOutput.append(item).append(lineSeparator());
 			}
+
+			for (Item item : inputForCurrent) {
+				currentOutput.append(item).append(lineSeparator());;
+			}
+
 			currentOutput.append(lineSeparator());
 			originalOutput.append(lineSeparator());
 
