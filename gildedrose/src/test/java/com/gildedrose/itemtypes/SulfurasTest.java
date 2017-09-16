@@ -6,10 +6,8 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 import com.gildedrose.Item;
-import com.gildedrose.itemtypes.Sulfuras;
 
 public class SulfurasTest {
-
 
 	@Test
 	public void neverLosesQuality() {

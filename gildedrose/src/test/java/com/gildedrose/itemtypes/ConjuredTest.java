@@ -15,6 +15,7 @@ public final class ConjuredTest {
 		Conjured conjured = new Conjured(item);
 
 		conjured.updateQuality();
+
 		assertThat(item.quality, Is.is(0));
 	}
 
@@ -24,9 +25,11 @@ public final class ConjuredTest {
 		Conjured conjured = new Conjured(item);
 
 		conjured.updateQuality();
+
 		assertThat(item.quality, Is.is(0));
 
 		conjured.updateQuality();
+
 		assertThat(item.quality, Is.is(0));
 	}
 }
