@@ -17,20 +17,17 @@ import com.gildedrose.Item;
 public final class ParsedCsv {
 	private final Path csvFile;
 
-
-	 /**
-	  * Instantiates new parser.
-	  * @param resourceName Name of CSV-file.
-	  * @param location Class to localize CSV-file from as resource.
-	  * @throws URISyntaxException
-	  */
+	/**
+	 * Instantiates new parser.
+	 * @param resourceName Name of CSV-file.
+	 * @param location Class to localize CSV-file from as resource.
+	 * @throws URISyntaxException
+	 */
 	public ParsedCsv(String resourceName, Class<?> location) throws URISyntaxException {
 		csvFile = Paths.get(location.getResource(resourceName).toURI());
 	}
 
-
-	public Item[] asItems()
-			throws IOException, URISyntaxException {
+	public Item[] asItems() throws IOException, URISyntaxException {
 
 		List<String> lines = Files.readAllLines(csvFile);
 

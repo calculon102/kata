@@ -88,11 +88,11 @@ public final class GoldenMasterTest {
 	@Parameter(value = 1)
 	public int days;
 
-	@Parameters(name="{0} for {1} days")
+	@Parameters(name = "{0} for {1} days")
 	public static Iterable<Object[]> createFixtures() {
 		return Arrays.asList(new Object[][] {
-			// More test-cases could be added.
-			{ "original.csv", 2 },
+				// More test-cases could be added.
+				{ "original.csv", 2 },
 		});
 	}
 
@@ -121,7 +121,8 @@ public final class GoldenMasterTest {
 			}
 
 			for (Item item : inputForCurrent) {
-				currentOutput.append(item).append(lineSeparator());;
+				currentOutput.append(item).append(lineSeparator());
+				;
 			}
 
 			currentOutput.append(lineSeparator());
@@ -137,6 +138,5 @@ public final class GoldenMasterTest {
 
 		assertEquals(originalOutput.toString(), currentOutput.toString());
 	}
-
 
 }
