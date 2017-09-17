@@ -85,7 +85,7 @@ public class Grid {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder((getWidth()) + 1 * getHeight());
+        StringBuilder sb = new StringBuilder(((getWidth()) + 1) * getHeight());
 
 
         for (int y = 0; y < getHeight(); y++) {

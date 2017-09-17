@@ -15,7 +15,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Game of Life");
 
-        GameOfLifeScene golScene = new GameOfLifeScene();
+        AppScene golScene = new AppScene();
 
         primaryStage.setOnCloseRequest(e -> golScene.shutdown());
 

@@ -5,14 +5,14 @@ import java.util.stream.Stream;
 /**
  * Logical unit of Game of Life.
  */
-public class Evolution {
-    private Generation beginning;
+class Evolution {
+    private final Generation beginning;
 
-    public Evolution(Generation beginning) {
+    Evolution(Generation beginning) {
         this.beginning = beginning;
     }
 
-    public Stream<Generation> progress() {
+    Stream<Generation> progress() {
         return Stream.iterate(beginning, Generation::evolve);
     }
 }

@@ -45,7 +45,7 @@ public class Patterns {
         });
     }
 
-    Grid blinker2() {
+    public Grid blinker2() {
         return Grid.of(new boolean[][]{
                 {false, false, false, false, false},
                 {false, false, true, false, false},

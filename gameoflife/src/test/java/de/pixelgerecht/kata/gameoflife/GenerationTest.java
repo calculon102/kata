@@ -1,6 +1,5 @@
 package de.pixelgerecht.kata.gameoflife;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -14,7 +13,7 @@ import static org.junit.Assert.assertThat;
 @RunWith(Parameterized.class)
 public class GenerationTest {
 
-    private String name;
+    private final String name;
     private final Grid initial;
     private final Grid evolved;
 

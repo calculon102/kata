@@ -1,24 +1,31 @@
 package de.pixelgerecht.kata.gameoflife.javafx;
 
+import de.pixelgerecht.kata.gameoflife.Generation;
 import de.pixelgerecht.kata.gameoflife.Grid;
+import de.pixelgerecht.kata.gameoflife.runner.GenerationRenderer;
+import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
-class GameOfLifeDisplay {
-
+/**
+ * Create user-interface for display of app-state.
+ */
+class AppDisplay implements GenerationRenderer {
     private final BorderPane pane = new BorderPane();
+    private final int minWidth = 640;
+    private final int minHeight = 360;
 
-    Node createPanel() {
-        pane.setMinSize(400, 400);
+    Node createNode() {
+        pane.setMinSize(minWidth, minHeight);
         return pane;
     }
 
-    void showGrid(Grid toShow) {
+    private void showGrid(Grid toShow) {
         GridPane gridPane = new GridPane();
-        gridPane.setMinSize(400, 400);
+        gridPane.setMinSize(minWidth, minHeight);
 
         addConstraints(gridPane, toShow);
 
@@ -26,9 +33,11 @@ class GameOfLifeDisplay {
             for (int y = 0; y < toShow.getHeight(); y++) {
                 BorderPane field = new BorderPane();
 
-                String color = toShow.isAlive(x, y) ? "#000000" : "#ffffff";
+                boolean isAlive = toShow.isAlive(x, y);
+                String style = getStyleForState(isAlive);
 
-                field.setStyle("-fx-background-color: " + color + "; -fx-border-color: #808080");
+                field.setStyle(style);
+
                 gridPane.add(field, x, y);
             }
         }
@@ -36,6 +45,11 @@ class GameOfLifeDisplay {
         pane.setCenter(gridPane);
     }
 
+    private String getStyleForState(boolean isAlive) {
+        return isAlive
+                ? "-fx-background-color: #000000; -fx-border-color: #808080"
+                : "-fx-background-color: #ffffff; -fx-border-color: #808080";
+    }
 
     private void addConstraints(GridPane gridPane, Grid toShow) {
         for (int x = 0; x < toShow.getWidth(); x++) {
@@ -53,5 +67,10 @@ class GameOfLifeDisplay {
             rc.setFillHeight(true);
             gridPane.getRowConstraints().add(rc);
         }
+    }
+
+    @Override
+    public void setGeneration(Generation generation) {
+        Platform.runLater(() -> showGrid(generation.getGrid()));
     }
 }
