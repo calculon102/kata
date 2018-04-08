@@ -65,13 +65,13 @@ class ParsedEntriesTest
     }
 
     private fun createRandomEntry() : Entry {
-        var input = ""
+        var accountNumber = ""
         val random = Random()
 
         for (i in 1..9) {
-            input += random.nextInt(9 - 0).toString()
+            accountNumber += random.nextInt(9 - 0).toString()
         }
 
-        return Entry(input)
+        return Entry(accountNumber)
     }
 }
