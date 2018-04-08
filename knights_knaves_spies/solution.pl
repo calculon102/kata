@@ -30,4 +30,29 @@ solve(A, B, C) :-
   says(B, A, knight),
   says(C, C, spy),
   unique(A, B, C), !.
+
+
+/*
+  Second part:
+  https://en.wikibooks.org/wiki/Puzzles/Logic_puzzles/Knights,_Knaves_%26_Spies_II
+  
+  The spy C looks for an answer, which would give a permutation that does not
+  blame him as a actual spy. The term below does that. 
+  
+  Usage:    
+  ?- solve(A, B, C).
+*/
+
+denies(knave, Truth, Truth).
+denies(knight, Actual, IsNot) :- Actual \= IsNot.
+denies(spy, _, _).
+
+solve2(A,B,C) :-
+  denies(A, A, spy),
+  says(B, B, spy),
+  denies(C, C, spy),
+  C \= spy,
+  unique(A, B, C).
+
+
   
