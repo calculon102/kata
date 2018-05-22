@@ -1,12 +1,18 @@
 package de.pixelgerecht.kata
 
-import java.lang.IllegalStateException
+import kotlin.IllegalStateException
 
 class Checksum(private val accountNumber: String) {
 
     fun asInt() : Int {
         if (accountNumber.length != 9) {
-            throw IllegalStateException("Account number must have 9 characters for checksum-calculation: $accountNumber")
+            throw IllegalStateException("Account-number must have 9 characters for checksum-calculation: $accountNumber")
+        }
+
+        for (char in accountNumber) {
+            if ( !char.isDigit()) {
+                throw IllegalStateException("Invalid char $char in account-number $accountNumber")
+            }
         }
 
         val sum = ( (accountNumber[0].toString().toInt() * 9)
@@ -22,5 +28,11 @@ class Checksum(private val accountNumber: String) {
         return sum % 11
     }
 
-    fun isValid() = asInt() == 0
+    fun isValid(): Boolean {
+        return try {
+            asInt() == 0
+        } catch (e: IllegalStateException) {
+            false
+        }
+    }
 }
