@@ -1,11 +1,11 @@
 package de.pixelgerecht.kata
 
 /**
- * Represents a single entry of 4 lines with 27 characters each line and a single character line-break.
+ * Represents a single rawData of 4 lines with 27 characters each line and a single character line-break.
  */
-class ParsedEntry(private val entry: String) {
+class ScannedAccountNumber(private val rawData: String) {
 
-    fun asAccountNumber(): String {
+    fun asString(): String {
         var result = ""
 
         for (i in 1..9) {
@@ -20,13 +20,13 @@ class ParsedEntry(private val entry: String) {
         val line2Pos = line1Pos + 27 + 1
         val line3Pos = line2Pos + 27 + 1
 
-        if (entry.length < line3Pos + 3) {
+        if (rawData.length < line3Pos + 3) {
             return "?"
         }
 
-        val line1 = entry.substring(line1Pos, line1Pos + 3)
-        val line2 = entry.substring(line2Pos, line2Pos + 3)
-        val line3 = entry.substring(line3Pos, line3Pos + 3)
+        val line1 = rawData.substring(line1Pos, line1Pos + 3)
+        val line2 = rawData.substring(line2Pos, line2Pos + 3)
+        val line3 = rawData.substring(line3Pos, line3Pos + 3)
 
         // Could be further optimized, but more declarative this way.
         if (line1 == " _ "
