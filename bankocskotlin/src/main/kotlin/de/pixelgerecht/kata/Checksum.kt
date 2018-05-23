@@ -2,6 +2,9 @@ package de.pixelgerecht.kata
 
 import kotlin.IllegalStateException
 
+/**
+ * Checksum and state-check for an account-number.
+ */
 class Checksum(private val accountNumber: String) {
 
     fun asInt() : Int {
@@ -33,6 +36,15 @@ class Checksum(private val accountNumber: String) {
             asInt() == 0
         } catch (e: IllegalStateException) {
             false
+        }
+    }
+
+    fun isIllegal(): Boolean {
+        return try {
+            asInt()
+            false
+        } catch (e: IllegalStateException) {
+            true
         }
     }
 }

@@ -4,6 +4,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import kotlin.test.assertEquals
+import kotlin.test.assertFails
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 
@@ -43,5 +45,12 @@ class ChecksumTest(private val accountNumber: String, private val expected: Int,
         val checksum = Checksum(accountNumber)
 
         assertEquals(isValid, checksum.isValid())
+    }
+
+    @Test
+    fun shouldCheckForIllegalNumbers() {
+        val checksum = Checksum(accountNumber)
+
+        assertEquals(isIllegal, checksum.isIllegal())
     }
 }

@@ -3,29 +3,29 @@ package de.pixelgerecht.kata
 /**
  * Creates an entry for testing-purposes.
  */
-class AccountNumber(private val input: String) {
+class AccountNumber(private val raw: String) {
     fun asScan(): String {
         var result = ""
 
-        for (i in 0 until input.length) {
-            result += convertLine1(input[i])
+        for (i in 0 until raw.length) {
+            result += convertLine1(raw[i])
         }
 
         result += "\n"
 
-        for (i in 0 until input.length) {
-            result += convertLine2(input[i])
+        for (i in 0 until raw.length) {
+            result += convertLine2(raw[i])
         }
 
         result += "\n"
 
-        for (i in 0 until input.length) {
-            result += convertLine3(input[i])
+        for (i in 0 until raw.length) {
+            result += convertLine3(raw[i])
         }
 
         result += "\n"
 
-        for (i in 0 until input.length) {
+        for (i in 0 until raw.length) {
             result += convertLine4()
         }
 
@@ -81,6 +81,10 @@ class AccountNumber(private val input: String) {
     }
 
     fun asString(): String {
-        return input
+        return raw
+    }
+
+    override fun toString(): String {
+        return raw
     }
 }
