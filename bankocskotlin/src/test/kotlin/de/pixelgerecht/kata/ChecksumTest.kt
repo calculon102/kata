@@ -4,8 +4,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import kotlin.test.assertEquals
-import kotlin.test.assertFails
-import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 
@@ -15,7 +13,7 @@ class ChecksumTest(private val accountNumber: String, private val expected: Int,
     companion object {
         @JvmStatic
         @Parameterized.Parameters(name = "{0} = {1} -> {2}")
-        fun data(): List<Array<Any>> {
+        fun data(): List<Array<*>> {
 
             val data = TestData.values()
                     .map { t -> arrayOf(t.asString, t.checksum, t.isValid, t.isIllegal) }
@@ -23,7 +21,7 @@ class ChecksumTest(private val accountNumber: String, private val expected: Int,
             data.add(arrayOf("12345678", 0, false, true))
             data.add(arrayOf("12345678?", 0, false, true))
 
-            return data
+            return data.toList()
         }
     }
 
